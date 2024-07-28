@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row pb-3 pt-3">
+        <div class="col-12">
+          <h1>Jira Board</h1>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-12 board">
+        <div class="kanban-board">
+          <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event,'pending')">
+            <div class="column-header">Todo</div>
+            <div draggable="true" *ngFor="let item of filterArrays('pending')" (dragstart)="onDragStart(item)">
+              <div class="task"> {{item.ticketName}}</div>
+          </div>
+          </div>
+          <div class="column" (drop)="onDrop($event,'inprogress')">
+            <div class="column-header">In-Progress</div>
+            <!-- Add task -->
+             <div draggable="true" *ngFor="let item of filterArrays('inprogress')" (dragstart)="onDragStart(item)">
+              <div class="task"> {{item.ticketName}}</div>
+          </div>
+          </div>
+          <div class="column" (drop)="onDrop($event,'done')">
+            <div class="column-header">Done</div>
+            <!-- Add task -->
+            <div draggable="true" *ngFor="let item of filterArrays('done')" (dragstart)="onDragStart(item)">
+             
+            <div class="task"> {{item.ticketName}}</div>
+          </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+   </div>
